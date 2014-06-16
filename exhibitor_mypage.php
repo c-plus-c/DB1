@@ -6,6 +6,7 @@
 <body>
 <h1>業者マイページ</h1>
 <?php
+	session_start();
 	print $_SESSION["NAME"];
 ?>
 さんようこそ！<br /><br />
@@ -14,7 +15,7 @@
 <a href="order_list.php">注文履歴参照ページへ</a><br />
 <a href="#">新規商品登録ページへ</a><br />
 
-<form action="#" method="post">
+<form action="logout.php" method="post">
 <input type="submit" value="ログアウト" />
 </form>
 </body>

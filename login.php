@@ -12,68 +12,78 @@ $password = "kousen08";
 
 try
 {
-	$dbh = new PDO($dsn, $user, $password);
-	
-	$dbh->query('SET NAMES utf8');
-
-	if($_POST["account_classification"]=="user")
+	session_start();
+	if(isset($_SESSION["USER_ID"]))
 	{
-		$sql = "select user_id, password, name from user";
-		$stmt = $dbh->query($sql);
-
-		$name="";
-		$succeed=false;
-		while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-			if($result['user_id'] == $_POST['id'] && $result['password'] == $_POST['password'])
-			{
-				$name = $result['name'];
-				$succeed = true;
-				break;
-			}
-		}
-
-		if($succeed)
-		{
-			session_start();
-			session_regenerate_id(TRUE);
-			$_SESSION["ID"] = $_POST["id"];
-			$_SESSION["NAME"] = $name;
-			header("Location: user_mypage.php");
-		}
-		else
-		{
-			print "ログイン失敗<br />";
-		}
-
+		header("Location: user_mypage.php");
 	}
-	elseif($_POST["account_classification"]=="exhibitor")
+	else if(isset($_SESSION["EXHIBITOR_ID"]))
 	{
-		$sql = "select exhibitor_id, password, name from exhibitor";
-		$stmt = $dbh->query($sql);
+		header("Location: exhibitor_mypage.php");
+	}
+	else
+	{
+		$dbh = new PDO($dsn, $user, $password);
+	
+		$dbh->query('SET NAMES utf8');
 
-		$name="";
-		$succeed = false;
+		if($_POST["account_classification"]=="user")
+		{
+			$sql = "select user_id, password, name from user";
+			$stmt = $dbh->query($sql);
 
-		while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-			if($result['exhibitor_id'] == $_POST['id'] && $result['password'] == $_POST['password'])
-			{
-				$name = $result['name'];
-				$succeed = true;
-				break;
+			$name="";
+			$succeed=false;
+			while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+				if($result['user_id'] == $_POST['id'] && $result['password'] == $_POST['password'])
+				{
+					$name = $result['name'];
+					$succeed = true;
+					break;
+				}
 			}
-		}
 
-		if($succeed)
-		{
-			session_start();
-			session_regenerate_id(TRUE);
-			$_SESSION["ID"] = $_POST["id"];
-			$_SESSION["NAME"] = $name;
-			header("Location: exhibitor_mypage.php");
+			if($succeed)
+			{
+				session_regenerate_id(TRUE);
+				$_SESSION["USER_ID"] = $_POST["id"];
+				$_SESSION["NAME"] = $name;
+				header("Location: user_mypage.php");
+			}
+			else
+			{
+				print "ログイン失敗<br />";
+			}
+
 		}
-		else
+		elseif($_POST["account_classification"]=="exhibitor")
 		{
-			print "ログイン失敗<br />";
+			$sql = "select exhibitor_id, password, name from exhibitor";
+			$stmt = $dbh->query($sql);
+
+			$name="";
+			$succeed = false;
+
+			while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+				if($result['exhibitor_id'] == $_POST['id'] && $result['password'] == $_POST['password'])
+				{
+					$name = $result['name'];
+					$succeed = true;
+					break;
+				}
+			}
+
+			if($succeed)
+			{
+				session_regenerate_id(TRUE);
+				$_SESSION["EXHIBITOR_ID"] = $_POST["id"];
+				$_SESSION["NAME"] = $name;
+				header("Location: exhibitor_mypage.php");
+			}
+			else
+			{
+				print "ログイン失敗<br />";
+			}
 		}
 	}
 }
