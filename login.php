@@ -32,7 +32,10 @@ try
 
 		if($succeed)
 		{
-
+			session_start();
+			session_regenerate_id(TRUE);
+			$_SESSION["ID"] = $_POST["id"];
+			header("Location: user_mypage.php");
 		}
 		else
 		{
@@ -57,7 +60,9 @@ try
 
 		if($succeed)
 		{
-
+			session_regenerate_id(TRUE);
+			$_SESSION["ID"] = $_POST["id"];
+			header("Location: exhibitor_mypage.php");
 		}
 		else
 		{
