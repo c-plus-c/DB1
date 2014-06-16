@@ -18,13 +18,15 @@ try
 
 	if($_POST["account_classification"]=="user")
 	{
-		$sql = "select user_id, password from user";
+		$sql = "select user_id, password, name from user";
 		$stmt = $dbh->query($sql);
 
+		$name="";
 		$succeed=false;
 		while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
 			if($result['user_id'] == $_POST['id'] && $result['password'] == $_POST['password'])
 			{
+				$name = $result['name'];
 				$succeed = true;
 				break;
 			}
@@ -35,6 +37,7 @@ try
 			session_start();
 			session_regenerate_id(TRUE);
 			$_SESSION["ID"] = $_POST["id"];
+			$_SESSION["NAME"] = $name;
 			header("Location: user_mypage.php");
 		}
 		else
@@ -45,14 +48,16 @@ try
 	}
 	elseif($_POST["account_classification"]=="exhibitor")
 	{
-		$sql = "select exhibitor_id, password from exhibitor";
+		$sql = "select exhibitor_id, password, name from exhibitor";
 		$stmt = $dbh->query($sql);
 
+		$name="";
 		$succeed = false;
 
 		while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
 			if($result['exhibitor_id'] == $_POST['id'] && $result['password'] == $_POST['password'])
 			{
+				$name = $result['name'];
 				$succeed = true;
 				break;
 			}
@@ -63,6 +68,7 @@ try
 			session_start();
 			session_regenerate_id(TRUE);
 			$_SESSION["ID"] = $_POST["id"];
+			$_SESSION["NAME"] = $name;
 			header("Location: exhibitor_mypage.php");
 		}
 		else

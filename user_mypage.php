@@ -6,7 +6,7 @@
 <body>
 <h1>利用者マイページ</h1>
 <?php
-	print "太郎";
+	print $_SESSION["NAME"];
 ?>
 さんようこそ！<br /><br />
 
