@@ -30,7 +30,7 @@ try
 	}
 
 	while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-		if($result['id'] == $_POST['user_id'] && $result['password'] == $_POST['password'])
+		if($result['user_id'] == $_POST['user_id'] && $result['password'] == $_POST['password'])
 		{
 			$deny = true;
 			break;
