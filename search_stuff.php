@@ -1,13 +1,12 @@
 <html lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>商品検索ページ</title>
+<title>商品ページ</title>
 </head>
 <body>
-<h1>商品検索ページ</h1>
+<h1>商品ページ</h1>
 <br /><br />
 <a href="user_mypage.php">利用者用マイページへ</a><br />
-<br /><br />
 <form action="<?php print($_SERVER['PHP_SELF']) ?>" method="get">
 検索ワード:<input type="text" name="query" value="<?php print($_GET['query']) ?>"/><br />
 <input type="submit" value="検索" />

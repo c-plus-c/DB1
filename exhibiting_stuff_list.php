@@ -21,7 +21,7 @@ try
 	$sql = "select stuff_id from exhibit_history where exhibitor_id = '".$_SESSION['EXHIBITOR_ID']."'";
 	$stmt1 = $dbh->query($sql);
 
-	print "<form><table border='1'>\n";
+	print "<form action=""><table border='1'>\n";
 	print "<tr><th>選択</th><th>商品名</th><th>価格</th><th>評価</th></tr>";
 	while($result1 = $stmt1->fetch(PDO::FETCH_ASSOC)){
 
