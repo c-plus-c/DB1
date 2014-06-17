@@ -21,7 +21,6 @@ try
 	$dbh->query('SET NAMES utf8');
 	if(isset($_GET['stuff_id']))
 	{
-		print "検索ワード：".$_GET['query']."での検索結果<br />\n";
 		print "<form action='purchase_notice.php' method='post'>\n";
 		$sql = "select * from stuff where stuff_id = ".$_GET['stuff_id'];
 		$stmt = $dbh->query($sql);
