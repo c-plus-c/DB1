@@ -23,10 +23,12 @@ try
 		list($num) = mysql_fetch_row($num_query);
 
 		session_start();
-
-		$sql = 'insert into stuff (user_id, stuff_id, number) values (?, ?, ?)';
+		
+		$sql = 'insert into purchase_history (user_id, stuff_id, number) values (?, ?, ?)';
 		$stmt = $dbh->prepare($sql);
 		$flag = $stmt->execute(array($_SESSION['USER_ID'], $_POST['stuff_id'], $_POST["number"]));	
+
+		print $_SESSION['USER_ID']." ".$_POST['stuff_id']." ".$_POST["number"]."\n";
 
 		print "以下の商品を購入しました！<br />\n";
 		print "商品名:".$_POST["stuff_name"]."<br />\n";
