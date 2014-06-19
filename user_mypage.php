@@ -11,7 +11,7 @@
 ?>
 さんようこそ！<br /><br />
 
-<a href="user_mypage.php">アカウント情報変更ページへ</a><br />
+<a href="user_change.php">アカウント情報変更ページへ</a><br />
 <a href="purchase_list.php">購入履歴参照ページへ</a><br />
 <a href="search_stuff.php">商品検索と結果表示ページへ</a><br />
 <br />
