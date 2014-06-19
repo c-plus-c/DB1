@@ -1,10 +1,10 @@
 <html lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>業者用アカウント変更画面</title>
+<title>利用者用アカウント変更画面</title>
 </head>
 <body>
-<h1>業者用アカウント変更画面</h1>
+<h1>利用者用アカウント変更画面</h1>
 <br />
 <a href="user_mypage.php">マイページへ</a><br />
 <?php
