@@ -11,7 +11,7 @@
 ?>
 さんようこそ！<br /><br />
 <br />
-<a href="#">アカウント情報変更ページへ</a><br />
+<a href="exhibitor_change.php">アカウント情報変更ページへ</a><br />
 <a href="order_list.php">注文履歴参照ページへ</a><br />
 <a href="register_stuff.php">新規商品登録ページへ</a><br />
 <a href="exhibiting_stuff_list.php">出品商品一覧ページへ</a><br />
