@@ -32,11 +32,11 @@ try
 		{
 			print "旧パスワードパスワードが正しくありません。";
 		}
-		else if($_POST["change"] == "yes")
+		else if(strcmp($_POST["change"],"yes")==0)
 		{
-			if(isset($_POST["new_password"]) && strcmp($_POST["confirm"],$_POST["new_password"]) == 0)
+			if(strcmp($_POST["new_password"],"")!=0 && strcmp($_POST["confirm"],$_POST["new_password"]) == 0)
 			{
-				$sql = 'update user set password = ?, name = ?, address = ?, email = ? where id = ?';
+				$sql = 'update user set password = ?, name = ?, address = ?, email = ? where user_id = ?';
 				$stmt = $dbh->prepare($sql);
 				$flag = $stmt->execute(array($_POST["new_password"], $_POST["name"], $_POST["address"], $_POST["email"], $_SESSION["USER_ID"]));	
 
@@ -47,7 +47,7 @@ try
 			}
 			else
 			{
-				$sql = 'update user set name = ?, address = ?, email = ? where id = ?';
+				$sql = 'update user set name = ?, address = ?, email = ? where user_id = ?';
 				$stmt = $dbh->prepare($sql);
 				$flag = $stmt->execute(array($_POST["name"], $_POST["address"], $_POST["email"], $_SESSION["USER_ID"]));	
 

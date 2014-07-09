@@ -26,7 +26,7 @@ try
 	{
 		print "検索ワード：".$_GET['query']."での検索結果</br>\n";
 		print "<table border='1'>\n";
-		$sql = "select * from stuff"; //ここをいじれ
+		$sql = "select * from stuff where stuff_name like '%".$_GET['query']."%'"; //ここをいじれ
 		$stmt = $dbh->query($sql);
 		try
 		{
