@@ -10,6 +10,7 @@
 <form action="<?php print($_SERVER['PHP_SELF']) ?>" method="get">
 検索ワード:<input type="text" name="query" value="<?php print($_GET['query']) ?>"/><br />
 <input type="submit" value="検索" />
+※空白なしで検索してください<br />
 </form>
 <?php
 
@@ -26,7 +27,7 @@ try
 	{
 		print "検索ワード：".$_GET['query']."での検索結果</br>\n";
 		print "<table border='1'>\n";
-		$sql = "select * from stuff where stuff_name like '%".$_GET['query']."%'"; //ここをいじれ
+		$sql = "select * from stuff where stuff_name like '%".$_GET['query']."%'";
 		$stmt = $dbh->query($sql);
 		try
 		{

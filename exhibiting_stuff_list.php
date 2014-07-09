@@ -22,8 +22,8 @@ try
 	$sql = "select stuff_id from exhibit_history where exhibitor_id = '".$_SESSION['EXHIBITOR_ID']."'";
 	$stmt1 = $dbh->query($sql);
 
-	print "<form action='#'><table border='1'>\n";
-	print "<tr><th>選択</th><th>商品名</th><th>価格</th><th>評価</th></tr>";
+	print "<table border='1'>\n";
+	print "<tr><th>商品名</th><th>価格</th><th>評価</th></tr>";
 	while($result1 = $stmt1->fetch(PDO::FETCH_ASSOC)){
 
 		$sql = "select * from stuff where stuff_id = '".$result1['stuff_id']."'";
@@ -32,8 +32,6 @@ try
 		{
 			while($result2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
 				print "<tr><td>";
-				print "<input type='checkbox' name='stuff' value='".$result2['stuff_id']."'>";
-				print "</td><td>";
 				print $result2['stuff_name'];
 				print "</td><td>";
 				print $result2['price'];
@@ -45,8 +43,6 @@ try
 		catch(PDOException $e){}
 	}
 	print "</table>\n";
-	print "<input type='submit' value='選択した商品を削除'>\n";
-	print "</form>\n";
 
 	$dbh = null;
 }
