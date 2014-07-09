@@ -69,7 +69,7 @@ echo <<< EOM
 名前:<input type="text" name="name" value="{$row["name"]}"/><br />
 住所:<input type="text" name="address" value="{$row["address"]}"/><br />
 メールアドレス:<input type="text" name="email" value="{$row["email"]}"/><br />
-<input type="submit" value="アカウント作成" />
+<input type="submit" value="アカウント情報変更" />
 <input type="hidden" name="change" value="yes" />
 </form>
 <br />

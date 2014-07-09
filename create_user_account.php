@@ -30,7 +30,7 @@ try
 	}
 
 	while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-		if($result['user_id'] == $_POST['user_id'] && $result['password'] == $_POST['password'])
+		if($result['user_id'] == $_POST['user_id'])
 		{
 			$deny = true;
 			break;
@@ -45,7 +45,7 @@ try
 
 		header("Location: account_create_notice.php");
 	}
-	else
+	else if(strcmp($_POST["create_us_flag"],"yes")==0)
 	{
 		print "登録に失敗しました。再度やり直してください。";
 	}
@@ -64,6 +64,7 @@ ID:<input type="text" name="user_id" /><br />
 名前:<input type="text" name="name" /><br />
 住所:<input type="text" name="address" /><br />
 メールアドレス:<input type="text" name="email" /><br />
+<input type="hidden" name="create_us_flag" value="yes" />
 <input type="submit" value="アカウント作成" />
 </form>
 <br />

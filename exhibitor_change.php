@@ -6,7 +6,7 @@
 <body>
 <h1>業者用アカウント変更画面</h1>
 <br />
-<a href="user_mypage.php">マイページへ</a><br />
+<a href="exhibitor_mypage.php">マイページへ</a><br />
 <?php
 $dsn = "mysql:dbname=DBs1313096;host=koala.cc.tsukuba.ac.jp";
 $user = "s1313096";
@@ -32,9 +32,9 @@ try
 		{
 			print "旧パスワードパスワードが正しくありません。";
 		}
-		else if($_POST["change"] == "yes")
+		else if(strcmp($_POST["change"],"yes")==0)
 		{
-			if(strcmp($_POST["new_password"],"")==0 && strcmp($_POST["confirm"],$_POST["new_password"]) == 0)
+			if(strcmp($_POST["new_password"],"")!=0 && strcmp($_POST["confirm"],$_POST["new_password"]) == 0)
 			{
 				$sql = 'update exhibitor set password = ?, name = ?, address = ?, email = ? where exhibitor_id = ?';
 				$stmt = $dbh->prepare($sql);
@@ -69,8 +69,8 @@ echo <<< EOM
 名前:<input type="text" name="name" value="{$row["name"]}"/><br />
 住所:<input type="text" name="address" value="{$row["address"]}"/><br />
 メールアドレス:<input type="text" name="email" value="{$row["email"]}"/><br />
-<input type="submit" value="アカウント作成" />
 <input type="hidden" name="change" value="yes" />
+<input type="submit" value="アカウント情報変更" />
 </form>
 <br />
 EOM;

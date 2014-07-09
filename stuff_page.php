@@ -1,10 +1,10 @@
 <html lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>商品検索ページ</title>
+<title>商品詳細ページ</title>
 </head>
 <body>
-<h1>商品検索ページ</h1>
+<h1>商品詳細ページ</h1>
 <br /><br />
 <a href="user_mypage.php">利用者用マイページへ</a><br />
 <br /><br />
@@ -30,7 +30,6 @@ try
 				print "<img src='pictures/".$result['stuff_id'].".png' /><br />\n";
 				print "商品名：".$result['stuff_name']."<br />\n";
 				print "価格：".$result['price']."<br />\n";
-				print "評価：".$result['rating']."/5<br />\n";
 				print "購入数量：<input type='number' name='number' value='1' min='1'><br />\n";
 				print "<input type='hidden' name='stuff_id' value='".$result['stuff_id']."'>\n";
 				print "<input type='hidden' name='purchaseFlag' value='1'>\n";

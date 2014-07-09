@@ -1,10 +1,10 @@
 <html lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>商品ページ</title>
+<title>商品検索ページ</title>
 </head>
 <body>
-<h1>商品ページ</h1>
+<h1>商品検索ページ</h1>
 <br /><br />
 <a href="user_mypage.php">利用者用マイページへ</a><br />
 <form action="<?php print($_SERVER['PHP_SELF']) ?>" method="get">
@@ -31,7 +31,7 @@ try
 		$stmt = $dbh->query($sql);
 		try
 		{
-			print "<tr><th>商品ページ</th><th>商品名</th><th>価格</th><th>評価</th></tr>";
+			print "<tr><th>商品ページ</th><th>商品名</th><th>価格</th></tr>";
 			while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
 				print "<tr><td>";
 				print "<a href=stuff_page.php?stuff_id=".$result['stuff_id'].">ページへ飛ぶ</a>";
@@ -39,8 +39,6 @@ try
 				print $result['stuff_name'];
 				print "</td><td>";
 				print $result['price'];
-				print "</td><td>";
-				print $result['rating'];
 				print "</td></tr>\n";
 			}
 		}

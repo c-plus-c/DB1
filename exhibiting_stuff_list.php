@@ -23,7 +23,7 @@ try
 	$stmt1 = $dbh->query($sql);
 
 	print "<table border='1'>\n";
-	print "<tr><th>商品名</th><th>価格</th><th>評価</th></tr>";
+	print "<tr><th>画像</th><th>商品名</th><th>価格</th></tr>";
 	while($result1 = $stmt1->fetch(PDO::FETCH_ASSOC)){
 
 		$sql = "select * from stuff where stuff_id = '".$result1['stuff_id']."'";
@@ -32,11 +32,11 @@ try
 		{
 			while($result2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
 				print "<tr><td>";
+				print "<img src='pictures/".$result2['stuff_id'].".png' />";
+				print "</td><td>";
 				print $result2['stuff_name'];
 				print "</td><td>";
 				print $result2['price'];
-				print "</td><td>";
-				print $result2['rating'];
 				print "</td></tr>\n";
 			}
 		}
