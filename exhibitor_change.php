@@ -34,9 +34,9 @@ try
 		}
 		else if($_POST["change"] == "yes")
 		{
-			if(isset($_POST["new_password"]) && strcmp($_POST["confirm"],$_POST["new_password"]) == 0)
+			if(strcmp($_POST["new_password"],"")==0 && strcmp($_POST["confirm"],$_POST["new_password"]) == 0)
 			{
-				$sql = 'update exhibitor set password = ?, name = ?, address = ?, email = ? where id = ?';
+				$sql = 'update exhibitor set password = ?, name = ?, address = ?, email = ? where exhibitor_id = ?';
 				$stmt = $dbh->prepare($sql);
 				$flag = $stmt->execute(array($_POST["new_password"], $_POST["name"], $_POST["address"], $_POST["email"], $_SESSION["EXHIBITOR_ID"]));	
 
@@ -47,7 +47,7 @@ try
 			}
 			else
 			{
-				$sql = 'update exhibitor set name = ?, address = ?, email = ? where id = ?';
+				$sql = 'update exhibitor set name = ?, address = ?, email = ? where exhibitor_id = ?';
 				$stmt = $dbh->prepare($sql);
 				$flag = $stmt->execute(array($_POST["name"], $_POST["address"], $_POST["email"], $_SESSION["EXHIBITOR_ID"]));	
 
